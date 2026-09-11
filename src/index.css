@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #10131a;
+    color: #e1e2ec;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom electric neon glows and glassmorphism helpers */
+.neon-glow-cyan {
+  box-shadow: 0 0 25px -3px rgba(0, 240, 255, 0.45);
+}
+
+.neon-glow-violet {
+  box-shadow: 0 0 25px -3px rgba(139, 92, 246, 0.35);
+}
+
+.neon-glow-border-cyan {
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+}
+
+.glass-panel {
+  background: rgba(24, 31, 50, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 25px -5px rgba(0, 240, 255, 0.2), 0 8px 20px -6px rgba(0, 0, 0, 0.6);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0e15;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #272a32;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff;
+}
+
+/* =====================================================
+   HERO SECTION — PREMIUM ANIMATIONS
+   ===================================================== */
+
+/* 1. Float gentle for profile picture */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-14px) rotate(0.6deg); }
+  66%       { transform: translateY(-7px) rotate(-0.4deg); }
+}
+
+/* 2. Slow ring rotation */
+@keyframes spin-slow {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 3. Reverse slow ring rotation */
+@keyframes spin-slow-reverse {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* 4. Animated gradient text */
+@keyframes gradient-text {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 5. Staggered fade-in-up for hero left column */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+/* 6. Slide-in from left with fade */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0px);
+  }
+}
+
+/* 7. Scale-in for profile picture */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7) translateY(20px);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
+}
+
+/* 8. Neon pulse glow ring */
+@keyframes neon-pulse-ring {
+  0%, 100% {
+    opacity: 0.35;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3), 0 0 60px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    opacity: 0.75;
+    box-shadow: 0 0 55px rgba(0, 240, 255, 0.55), 0 0 90px rgba(168, 85, 247, 0.35);
+  }
+}
+
+/* 9. Ambient background glow morph */
+@keyframes glow-morph {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.3;
+  }
+  33% {
+    transform: scale(1.08) rotate(15deg);
+    opacity: 0.45;
+  }
+  66% {
+    transform: scale(0.95) rotate(-10deg);
+    opacity: 0.25;
+  }
+}
+
+/* 10. Typewriter cursor blink */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* 11. Shimmer sweep on name */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* 12. Orbit dot around profile image */
+@keyframes orbit {
+  0%   { transform: rotate(0deg) translateX(220px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(220px) rotate(-360deg); }
+}
+
+@keyframes orbit-reverse {
+  0%   { transform: rotate(0deg) translateX(200px) rotate(0deg); }
+  100% { transform: rotate(-360deg) translateX(200px) rotate(360deg); }
+}
+
+/* =====================================================
+   ANIMATION UTILITY CLASSES
+   ===================================================== */
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 18s linear infinite;
+}
+
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: gradient-text 4s ease infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Staggered hero text elements */
+.hero-item-1 {
+  opacity: 0;
+  animation: slide-in-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-item-2 {
+  opacity: 0;
+  animation: fade-in-up 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.hero-item-3 {
+  opacity: 0;
+  animation: fade-in-up 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.hero-item-4 {
+  opacity: 0;
+  animation: fade-in-up 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.hero-item-5 {
+  opacity: 0;
+  animation: fade-in-up 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+
+/* Profile picture entrance */
+.animate-scale-in {
+  opacity: 0;
+  animation: scale-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+/* Neon pulsing ring */
+.animate-neon-pulse-ring {
+  animation: neon-pulse-ring 3s ease-in-out infinite;
+}
+
+/* Glow morph blob */
+.animate-glow-morph {
+  animation: glow-morph 8s ease-in-out infinite;
+}
+
+/* Orbit dot */
+.animate-orbit {
+  animation: orbit 8s linear infinite;
+}
+
+.animate-orbit-reverse {
+  animation: orbit-reverse 12s linear infinite;
+}
+
+/* Shimmer text */
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    #00f0ff 0%,
+    #dbfcff 25%,
+    #a855f7 50%,
+    #dbfcff 75%,
+    #00f0ff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3.5s linear infinite;
+}
